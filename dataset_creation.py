@@ -18,9 +18,11 @@ print(result)
 file_id = result['id']
 
 time_to_sleep = 20
-# Sleep time_to_sleep sec
-print('Sleeping for {} sec'.format(time_to_sleep))
-time.sleep(time_to_sleep)
+print('Sleeping for {} seconds'.format(time_to_sleep), end='', flush=True)
+
+for i in range(time_to_sleep):
+    print('.', end='', flush=True)
+    time.sleep(1)
 
 result = openai.FineTuningJob.create(training_file=file_id, model="gpt-3.5-turbo")
 print(result)
